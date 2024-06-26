@@ -1,6 +1,6 @@
 // defining headers for API request
 let myHeaders = new Headers();
-myHeaders.append("apikey", "DTu7I8ygdE6WzKgAy86ETD46BghoSTYw");
+myHeaders.append("apikey", "OjAa6Lls8qA2pispxt5yvbLdgWrJjqmd");
 
 
 // request options for API call
@@ -49,7 +49,7 @@ getsymbols(symbolurl,getrequestOptions).then(data => {
 
 //selecting submit button
 let btn = document.getElementById("btn");
-btn.addEventListener('click', () => { // eventlistener for submit btn on click
+btn.addEventListener('click', (e) => { // eventlistener for submit btn on click
     //selecting elements to display the conversion
     let convertto = to.value;
     console.log(convertto);
@@ -62,9 +62,15 @@ btn.addEventListener('click', () => { // eventlistener for submit btn on click
     //async function to get conversion from the selected inputs
     async function convert(url, requestoptions) {
         try {
-            let response = await fetch(url, requestoptions);
-            let data = await response.json();
-            return data;
+            if (convertto == convertfrom) {
+                e.preventDefault();
+                window.alert("Please select different currency");
+                return
+            } else {
+                let response = await fetch(url, requestoptions);
+                let data = await response.json();
+                return data;
+            }
         }
         catch (error) {
             window.alert("Oops something went wrong: " + error.message);
@@ -72,8 +78,8 @@ btn.addEventListener('click', () => { // eventlistener for submit btn on click
     }
     //appending the conversion data to the display field
     convert(url,getrequestOptions).then(data => {
-        fromamount.innerText = convertamount
-        camount.innerText = Number(data.result).toFixed(2);
+        fromamount.innerHTML = `${convertamount} <p class="small">${data.query.from}</p>`
+        camount.innerHTML = `${Number(data.result).toFixed(2)} <p class="small">${data.query.to}</p>`;
     })
 })
 

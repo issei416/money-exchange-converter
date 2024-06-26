@@ -19,15 +19,15 @@
             <select type="text" class="to col-12 m-2 rounded border border border-dark" placeholder="to" id="to"
                 required></select>
             <input type="number" class="amount col-12 m-2 rounded border border border-dark" placeholder="Amount"
-                id="amount" required>
+                id="amount" required min=0.1>
         </div>
-        <button class="btn btn-primary col-12 col-sm-6 col-md-4" id="btn">submit</button>
+        <button class="btn btn-primary col-12 col-sm-6 col-md-4" id="btn">Exchange</button>
     </main>
     <div class="response container">
-        <h1 class="display-3 container p-3 d-flex justify-content-evenly border border-dark rounded">
-            <div id="cfrom" class="col-4  text-center">0</div>
-            <img class="img-fluid" src="./public/exchange.png" alt="exchange-symbol">
-            <div id="camount" class="col-4  text-center">0</div>
+        <h1 class="display-3 display container p-3 d-flex flex-column flex-sm-row justify-content-center align-items-center border border-dark rounded">
+            <div id="cfrom" class="col-12 col-sm-4  text-center">0</div>
+            <img class="img-fluid col-12 col-md-3 text-center m-3" src="./public/exchange.png" alt="exchange-symbol">
+            <div id="camount" class="col-12 col-sm-4  text-center">0</div>
         </h1>
     </div>
     <script src="script/script.js"></script>
